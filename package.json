@@ -31,7 +31,7 @@
     "url": "https://github.com/sponsors/Lansow"
   },
   "author": "Lansow",
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "bin": {
     "img-opt": "./src/index.js"
