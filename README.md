@@ -1,66 +1,137 @@
 # OptiPixel CLI
 
-A powerful and developer-friendly CLI tool for optimizing, compressing, resizing, and converting images for modern web applications.
+<p align="center">
+  <img src="https://img.shields.io/npm/v/optipixel-cli" alt="npm version">
+  <img src="https://img.shields.io/npm/dm/optipixel-cli" alt="npm downloads">
+  <img src="https://img.shields.io/npm/l/optipixel-cli" alt="license">
+  <img src="https://img.shields.io/node/v/optipixel-cli" alt="node version">
+</p>
 
-Built with performance and simplicity in mind, OptiPixel helps developers reduce image sizes, improve website loading speed, and automate image optimization workflows directly from the terminal.
+<p align="center">
+  A powerful CLI tool for optimizing, compressing, resizing, and converting images for modern web applications.
+</p>
+
+<p align="center">
+  NPM Package:
+  https://www.npmjs.com/package/optipixel-cli
+</p>
+
+---
+
+## Why OptiPixel?
+
+Modern websites depend heavily on image performance.
+
+Large image assets increase page load times, reduce Core Web Vitals scores, and negatively impact user experience.
+
+OptiPixel helps developers optimize images directly from the terminal with a simple interactive workflow.
+
+Perfect for:
+
+- Frontend developers
+- Next.js projects
+- React applications
+- Static websites
+- Portfolio sites
+- Blogs
+- E-commerce platforms
 
 ---
 
 ## Features
 
-### Image Scanning
+### Smart Image Scanning
 
 - Scan a single image file
 - Scan entire directories recursively
-- Automatically detect supported image formats
-- Ignore previously optimized files
+- Detect supported image formats automatically
+- Ignore already optimized files
+- Count image types and folders
+- Calculate total image size before optimization
 
 ### Optimization
 
 - Convert images to WebP
 - Convert images to AVIF
-- Compress images with configurable quality
-- Resize images with maximum width constraints
-- Generate optimized copies without modifying originals
+- Compress images with configurable quality settings
+- Resize images while preserving aspect ratio
+- Prevent unnecessary upscaling
+- Keep original files untouched
 
-### Smart Presets
+### Interactive CLI Wizard
 
-#### Web Recommended
+Built-in guided configuration:
 
-Optimized for websites and web applications.
+- Preset selection
+- Format selection
+- Quality control
+- Metadata handling
+- Resize options
 
-```text
-Format: WebP
-Quality: 80
-Metadata: Removed
-Resize: Disabled
-```
+### Progress Tracking
 
-#### Maximum Compression
-
-Designed for maximum file size reduction.
+Real-time terminal progress display:
 
 ```text
-Format: AVIF
-Quality: 65
-Metadata: Removed
-Resize: Disabled
+[■■■■■■■■■■□□□□□□□□] 42%
+
+104 / 247
 ```
 
-#### High Quality
+### Optimization Report
 
-Designed for preserving image quality.
+Detailed summary after processing:
 
 ```text
-Format: WebP
-Quality: 92
-Metadata: Preserved
-Resize: Disabled
+✔ 247 images optimized
+
+Before Size : 1.8 GB
+After Size  : 620 MB
+
+Saved Space : 1.18 GB
+Reduction   : 65.4%
 ```
 
-#### Custom
+---
 
-Configure every option manually.
+## Smart Presets
+
+### Web Recommended
+
+Best choice for most websites.
+
+```text
+Format   : WebP
+Quality  : 80
+Metadata : Removed
+Resize   : Disabled
+```
+
+### Maximum Compression
+
+Prioritizes smallest possible file size.
+
+```text
+Format   : AVIF
+Quality  : 65
+Metadata : Removed
+Resize   : Disabled
+```
+
+### High Quality
+
+Prioritizes visual quality.
+
+```text
+Format   : WebP
+Quality  : 92
+Metadata : Preserved
+Resize   : Disabled
+```
+
+### Custom
+
+Manually configure:
 
 - Output format
 - Quality
@@ -71,7 +142,7 @@ Configure every option manually.
 
 ## Supported Formats
 
-Input formats:
+### Input
 
 - JPG
 - JPEG
@@ -82,7 +153,7 @@ Input formats:
 - TIFF
 - BMP
 
-Output formats:
+### Output
 
 - WebP
 - AVIF
@@ -90,14 +161,62 @@ Output formats:
 
 ---
 
-## Installation
+# Installation
+
+## Install Globally
+
+Install once and use everywhere.
+
+```bash
+npm install -g optipixel-cli
+```
+
+Verify installation:
+
+```bash
+optipixel --version
+```
+
+---
+
+## Use Directly With NPX
+
+No installation required.
+
+```bash
+npx optipixel-cli ./images
+```
+
+Single file:
+
+```bash
+npx optipixel-cli ./photo.jpg
+```
+
+---
+
+## Install Inside a Project
+
+```bash
+npm install optipixel-cli
+```
+
+Run using:
+
+```bash
+npx optipixel ./images
+```
+
+---
+
+## Development Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/optipixel-cli.git
+git clone https://github.com/lansow/OptiPixelCli.git
 
-cd optipixel-cli
+cd OptiPixelCli
 ```
 
 Install dependencies:
@@ -106,35 +225,47 @@ Install dependencies:
 npm install
 ```
 
-Run in development mode:
+Run:
 
 ```bash
-npm run dev <path>
+npm run dev ./images
+```
+
+Single file:
+
+```bash
+npm run dev ./photo.jpg
+```
+
+---
+
+# Usage
+
+## Optimize an Entire Directory
+
+```bash
+optipixel ./images
 ```
 
 Example:
 
 ```bash
-npm run dev ./images
-```
-
-Or:
-
-```bash
-npm run dev ./images/photo.jpg
+optipixel ./public/images
 ```
 
 ---
 
-## Usage
-
-### Optimize a Directory
+## Optimize a Single Image
 
 ```bash
-npm run dev ./images
+optipixel ./photo.jpg
 ```
 
-Example output:
+---
+
+## Scan Results
+
+Example:
 
 ```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -152,17 +283,9 @@ Total Size      : 1.8 GB
 
 ---
 
-### Optimize a Single File
-
-```bash
-npm run dev ./photo.jpg
-```
-
----
-
 ## Interactive Configuration
 
-After scanning, OptiPixel launches an interactive setup wizard.
+After scanning files, OptiPixel launches the setup wizard.
 
 ```text
 Choose optimization preset
@@ -173,7 +296,7 @@ Choose optimization preset
   Custom
 ```
 
-Selecting Custom allows you to configure:
+Custom mode allows configuration of:
 
 ```text
 Output Format
@@ -185,25 +308,15 @@ Maximum Width
 
 ---
 
-## Progress Tracking
-
-Real-time optimization progress:
-
-```text
-[■■■■■■■■■■□□□□□□□□] 42%
-
-104 / 247
-```
-
----
-
 ## Output Files
 
-Optimized images are created next to the original image.
+Optimized files are generated next to the original file.
 
 Example:
 
 ```text
+images/
+
 photo.jpg
 photo.optimized.webp
 ```
@@ -212,19 +325,92 @@ Original files are never modified.
 
 ---
 
-## Optimization Summary
-
-After completion, OptiPixel displays a detailed report.
+## Example Workflow
 
 ```text
-✔ 247 images optimized
-
-Before Size : 1.8 GB
-After Size  : 620 MB
-
-Saved Space : 1.18 GB
-Reduction   : 65.4%
+User Path
+    ↓
+Scan Files
+    ↓
+Analyze Images
+    ↓
+Select Preset
+    ↓
+Configure Options
+    ↓
+Optimize Images
+    ↓
+Generate Report
 ```
+
+---
+
+## Technologies Used
+
+### Sharp
+
+High-performance image processing engine.
+
+Used for:
+
+- Compression
+- Format conversion
+- Resizing
+- Metadata handling
+
+Repository:
+
+https://github.com/lovell/sharp
+
+---
+
+### Commander
+
+CLI command parsing and management.
+
+Repository:
+
+https://github.com/tj/commander.js
+
+---
+
+### Fast Glob
+
+Fast recursive filesystem scanning.
+
+Repository:
+
+https://github.com/mrmlnc/fast-glob
+
+---
+
+### Inquirer Prompts
+
+Interactive terminal prompts.
+
+Repository:
+
+https://github.com/SBoudrias/Inquirer.js
+
+---
+
+### Ora
+
+Terminal spinners and loading states.
+
+Repository:
+
+https://github.com/sindresorhus/ora
+
+---
+
+### Chalk
+
+Terminal colors and formatting.
+
+Repository:
+
+https://github.com/chalk/chalk
 
 ---
 
@@ -254,76 +440,9 @@ src/
 
 ---
 
-## Technologies Used
-
-### Sharp
-
-High-performance image processing library.
-
-Used for:
-
-- Compression
-- Conversion
-- Resizing
-- Metadata handling
-
-### Commander
-
-CLI argument parsing and command management.
-
-### Fast Glob
-
-Fast recursive file system scanning.
-
-Used to:
-
-- Scan directories
-- Locate image files
-- Detect nested folders
-
-### Inquirer Prompts
-
-Interactive terminal user interface.
-
-Used for:
-
-- Preset selection
-- Custom configuration
-- User confirmations
-
-### Ora
-
-Terminal spinners and loading indicators.
-
-### Chalk
-
-Terminal colors and formatting.
-
----
-
-## Current Workflow
-
-```text
-User Input
-     ↓
-Scan Files
-     ↓
-Analyze Images
-     ↓
-Select Preset
-     ↓
-Configure Options
-     ↓
-Optimize Images
-     ↓
-Generate Report
-```
-
----
-
 ## Roadmap
 
-### Planned Features
+Planned future improvements:
 
 - Output Directory Support
 - Replace Original Files
@@ -335,15 +454,40 @@ Generate Report
 - Watch Mode
 - Batch Profiles
 - Plugin System
+- CI/CD Integration
+- SVG Optimization
+- PNG Quantization
+
+---
+
+## Contributing
+
+Contributions, issues, and feature requests are welcome.
+
+Feel free to open an issue or submit a pull request.
+
+Repository:
+
+https://github.com/lansow/OptiPixelCli
 
 ---
 
 ## Author
 
-Lansow
+**Lansow**
+
+GitHub:
+
+https://github.com/lansow
+
+Sponsor:
+
+https://github.com/sponsors/Lansow
 
 ---
 
 ## License
 
 MIT License
+
+Copyright (c) 2026 Lansow
