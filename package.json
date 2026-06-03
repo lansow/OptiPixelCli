@@ -1,0 +1,57 @@
+{
+  "name": "optipixel-cli",
+  "version": "1.0.0",
+  "description": "A powerful CLI tool for optimizing, compressing, resizing, and converting images for modern web applications.",
+  "keywords": [
+    "image",
+    "optimizer",
+    "compression",
+    "webp",
+    "avif",
+    "sharp",
+    "cli",
+    "images",
+    "converter",
+    "resize",
+    "performance",
+    "frontend",
+    "nextjs",
+    "react"
+  ],
+  "homepage": "https://github.com/lansow/OptiPixelCli",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lansow/OptiPixelCli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lansow/OptiPixelCli"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/Lansow"
+  },
+  "author": "Lansow",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "img-opt": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "node src/index.js"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "@inquirer/prompts": "^8.5.2",
+    "chalk": "^5.6.2",
+    "commander": "^15.0.0",
+    "fast-glob": "^3.3.3",
+    "ora": "^9.4.0",
+    "sharp": "^0.34.5"
+  }
+}
