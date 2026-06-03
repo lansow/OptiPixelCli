@@ -346,4 +346,4 @@ Lansow
 
 ## License
 
-ISC License
+MIT License
