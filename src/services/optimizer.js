@@ -10,7 +10,11 @@ export async function optimizeImage(file, config) {
   const parsed = path.parse(sourcePath);
 
   const outputExt =
-    config.format === "original" ? file.extension : config.format;
+    config.format === "original"
+      ? file.extension === "bmp"
+        ? "png"
+        : file.extension
+      : config.format;
 
   const outputPath = path.join(
     parsed.dir,
@@ -26,23 +30,29 @@ export async function optimizeImage(file, config) {
     });
   }
 
-  switch (config.format) {
-    case "webp":
-      pipeline = pipeline.webp({
-        quality: config.quality,
-      });
-      break;
+  if (config.metadata) {
+    pipeline = pipeline.withMetadata();
+  }
 
-    case "avif":
-      pipeline = pipeline.avif({
-        quality: config.quality,
-      });
-      break;
+  if (config.format !== "original") {
+    switch (config.format) {
+      case "webp":
+        pipeline = pipeline.webp({
+          quality: config.quality,
+        });
+        break;
 
-    default:
-      pipeline = pipeline.jpeg({
-        quality: config.quality,
-      });
+      case "avif":
+        pipeline = pipeline.avif({
+          quality: config.quality,
+        });
+        break;
+
+      default:
+        pipeline = pipeline.jpeg({
+          quality: config.quality,
+        });
+    }
   }
 
   await pipeline.toFile(outputPath);
