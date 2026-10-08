@@ -88,5 +88,6 @@ export async function optimizeCommand(inputPath) {
     console.log();
   } catch (error) {
     spinner.fail(error.message);
+    process.exitCode = 1;
   }
 }
