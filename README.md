@@ -157,7 +157,7 @@ Manually configure:
 
 - WebP
 - AVIF
-- Original Format
+- Original Format (BMP inputs are saved as PNG because Sharp cannot write BMP)
 
 ---
 
